@@ -345,7 +345,7 @@ import base64
 
 def render_header():
     try:
-        logo_path = "/Users/mariafernandaserraldegarces/Desktop/SGSG/CDD-ModuloV-Proyecto/SafeRoad CDMX - Modulo V.png"
+        logo_path = "SafeRoad CDMX - Modulo V.png"
 
         with open(logo_path, "rb") as f:
             logo_base64 = base64.b64encode(f.read()).decode()
