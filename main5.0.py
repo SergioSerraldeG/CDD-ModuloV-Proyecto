@@ -16,14 +16,14 @@ import time
 # --- CARGA DE VARIABLES Y MODELO ---
 
 load_dotenv(override=True)
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or st.secrets["OPENAI_API_KEY"]
-OWM_API = os.getenv("OWM_API_KEY") or st.secrets("OWM_API_KEY")
-TOMTOM_API = os.getenv("TOMTOM_API_KEY") or st.secrets("TOMTOM_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OWM_API = os.getenv("OWM_API_KEY")
+TOMTOM_API = os.getenv("TOMTOM_API_KEY")
 
 client_openai = None
 if OPENAI_API_KEY:
     try:
-        client_openai = OpenAI(api_key=OPENAI_API_KEY) 
+        client_openai = OpenAI(api_key=OPENAI_API_KEY)
     except Exception as e:
         st.warning(f"No se pudo inicializar el cliente de OpenAI: {e}")
 
@@ -31,7 +31,7 @@ model_openai = "gpt-4o-mini"
 
 try:
     # Carga el modelo, el codificador y la lista de features desde el archivo .pkl
-    modelo_data = joblib.load("modelo_xgb_full.pkl")
+    modelo_data = joblib.load("/Users/mariafernandaserraldegarces/Downloads/Accidentes - Modulo V/modelo_xgb_full.pkl")
     modelo_xgb = modelo_data.get("model")
     modelo_features = modelo_data.get("features")
     le_alcaldia = LabelEncoder()
@@ -345,7 +345,7 @@ import base64
 
 def render_header():
     try:
-        logo_path = "SafeRoad CDMX - Modulo V.png"
+        logo_path = "/Users/mariafernandaserraldegarces/Desktop/SGSG/CDD-ModuloV-Proyecto/SafeRoad CDMX - Modulo V.png"
 
         with open(logo_path, "rb") as f:
             logo_base64 = base64.b64encode(f.read()).decode()
@@ -419,15 +419,11 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 
-# ------- BARRA DE BÚSQUEDA CRISTAL --------
-user_search = st.text_input(
-    " ",
-    placeholder="🔍 Escribe una dirección, cruce o colonia…",
-    label_visibility="collapsed"
-)
-
-if user_search:
-    prompt = user_search
+# ------- BARRA DE CHAT STICKY --------
+# Reemplazamos st.text_input por st.chat_input.
+# Este widget está diseñado para permanecer en la parte inferior de la pantalla.
+if prompt := st.chat_input("🔍 Escribe una dirección, cruce o colonia…"):
+    
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
