@@ -16,14 +16,14 @@ import time
 # --- CARGA DE VARIABLES Y MODELO ---
 
 load_dotenv(override=True)
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OWM_API = os.getenv("OWM_API_KEY")
-TOMTOM_API = os.getenv("TOMTOM_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or st.secrets["OPENAI_API_KEY"]
+OWM_API = os.getenv("OWM_API_KEY") or st.secrets("OWM_API_KEY")
+TOMTOM_API = os.getenv("TOMTOM_API_KEY") or st.secrets("TOMTOM_API_KEY")
 
 client_openai = None
 if OPENAI_API_KEY:
     try:
-        client_openai = OpenAI(api_key=OPENAI_API_KEY)
+        client_openai = OpenAI(api_key=OPENAI_API_KEY) 
     except Exception as e:
         st.warning(f"No se pudo inicializar el cliente de OpenAI: {e}")
 
