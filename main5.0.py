@@ -31,7 +31,7 @@ model_openai = "gpt-4o-mini"
 
 try:
     # Carga el modelo, el codificador y la lista de features desde el archivo .pkl
-    modelo_data = joblib.load("/Users/mariafernandaserraldegarces/Downloads/Accidentes - Modulo V/modelo_xgb_full.pkl")
+    modelo_data = joblib.load("modelo_xgb_full.pkl")
     modelo_xgb = modelo_data.get("model")
     modelo_features = modelo_data.get("features")
     le_alcaldia = LabelEncoder()
