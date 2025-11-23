@@ -1,0 +1,19 @@
+[project]
+name = "cdd-modulov-proyecto"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "folium>=0.20.0",
+    "geopy>=2.4.1",
+    "google-generativeai>=0.8.5",
+    "joblib>=1.5.2",
+    "openai>=2.7.1",
+    "python-dotenv>=1.2.1",
+    "scikit-learn>=1.6.1",
+    "streamlit>=1.50.0",
+    "streamlit-folium>=0.25.3",
+    "unidecode>=1.4.0",
+    "xgboost>=2.1.4",
+]
