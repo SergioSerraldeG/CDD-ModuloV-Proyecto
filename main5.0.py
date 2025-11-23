@@ -16,9 +16,9 @@ import time
 # --- CARGA DE VARIABLES Y MODELO ---
 
 load_dotenv(override=True)
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OWM_API = os.getenv("OWM_API_KEY")
-TOMTOM_API = os.getenv("TOMTOM_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or st.secrets["OPENAI_API_KEY"]
+OWM_API = os.getenv("OWM_API_KEY") or st.secrets["OWM_API_KEY"]
+TOMTOM_API = os.getenv("TOMTOM_API_KEY") or st.secrets["TOMTOM_API_KEY"]
 
 client_openai = None
 if OPENAI_API_KEY:
@@ -31,7 +31,7 @@ model_openai = "gpt-4o-mini"
 
 try:
     # Carga el modelo, el codificador y la lista de features desde el archivo .pkl
-    modelo_data = joblib.load("/Users/mariafernandaserraldegarces/Downloads/Accidentes - Modulo V/modelo_xgb_full.pkl")
+    modelo_data = joblib.load("modelo_xgb_full.pkl")
     modelo_xgb = modelo_data.get("model")
     modelo_features = modelo_data.get("features")
     le_alcaldia = LabelEncoder()
@@ -345,7 +345,7 @@ import base64
 
 def render_header():
     try:
-        logo_path = "/Users/mariafernandaserraldegarces/Desktop/SGSG/CDD-ModuloV-Proyecto/SafeRoad CDMX - Modulo V.png"
+        logo_path = "SafeRoad CDMX - Modulo V.png"
 
         with open(logo_path, "rb") as f:
             logo_base64 = base64.b64encode(f.read()).decode()
