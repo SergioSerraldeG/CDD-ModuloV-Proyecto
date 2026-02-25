@@ -375,8 +375,8 @@ def render_header():
         <img src="data:image/png;base64,{logo_base64}" style="width:170px;">
     </div>
 
-    <h1 class="titulo_principal">🚗 SafeRoad CDMX 🚑</h1>
-    <p class="subtitulo_principal">Asistente de riesgo de accidentes viales en CDMX con IA.</p>
+    <h1 class="titulo_principal">🚗 SafeRoad CDMX V2.0 🚑</h1>
+    <p class="subtitulo_principal">Asistente de riego de accidentes viales en CDMX con IA.</p>
     <hr class="linea-titulo">
 """, unsafe_allow_html=True)
 
